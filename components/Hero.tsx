@@ -1,28 +1,26 @@
 
 'use client'
-import Spline from '@splinetool/react-spline'
-import Image from 'next/image'
-
-
-
+import { useGLTF } from '@react-three/drei'
+import {Model} from '@/components/Teste'
+import {Canvas} from '@react-three/fiber'
+import {OrbitControls} from '@react-three/drei'
 
 export default function Hero(){
-
+  
   return(
-    <>
-    <div id="imgwrap" className='absolute z-10 w-[50%]  h-full'>
+    <div className='flex w-screen  h-screen'>
+      <Canvas style={{
+        height:'100vh',
+        width:'100vw',
+      }}>
+        <Model/>
+        <ambientLight intensity={0.2}/>
+        <directionalLight color="white" position={[0, 0, 5]} />
 
-    <Image src='/REGISTRO.png' alt='img' fill style={{objectFit:'contain', WebkitFilter:'grayscale(100%)'}}/>
+      <OrbitControls/>
+      </Canvas>
+
+    
     </div>
-
-    <div className='w-full h-full absolute pointer-events-none'>
-
-    </div>
-    <div className='absolute z-[-1] w-full h-full'>
-
-    <Spline scene='https://prod.spline.design/R4FIWF99fCEqggqj/scene.splinecode' />
-    </div>
-    </>
-  )
+)
 }
-
